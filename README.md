@@ -573,21 +573,6 @@ grep "webhook_to_jid" /var/log/prosody/prosody.log | tail -20
 4. Check variable names match your alert structure (use debug logs to see available fields)
 5. For nested fields, use dot notation: `{labels.instance}` not `{labels[instance]}`
 
-## Security Considerations
-
-1. **Use HTTPS:** Always use HTTPS (port 5281) for webhook endpoints in production
-2. **Strong Passwords:** Use strong, random passwords for HTTP Basic Auth
-3. **Network Security:** Consider firewall rules to restrict webhook access to Alertmanager servers only
-4. **TLS Verification:** Enable TLS certificate verification in Alertmanager (don't use `insecure_skip_verify: true` in production)
-5. **Credential Rotation:** Regularly rotate webhook credentials
-
-## Performance Notes
-
-- Each alert in the webhook payload is sent as a separate XMPP message
-- For MUC delivery, the module uses internal MUC API for efficient message broadcast
-- No persistent connections are maintained; the module is stateless
-- HTTP requests are processed synchronously but XMPP message delivery is asynchronous
-
 ## Compatibility
 
 - **Prosody:** 0.13.x or newer
