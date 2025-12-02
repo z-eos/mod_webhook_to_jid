@@ -103,13 +103,13 @@ receivers:
   - name: 'xmpp-alerts'
     webhook_configs:
       - url: 'https://example.com:5281/webhook_to_jid/alerts@conference.example.com'
-	send_resolved: true
-	http_config:
-	  basic_auth:
-	    username: 'alertmanager'
-	    password: 'your-secret-password'
-	  tls_config:
-	    insecure_skip_verify: false
+    send_resolved: true
+    http_config:
+      basic_auth:
+        username: 'alertmanager'
+        password: 'your-secret-password'
+      tls_config:
+        insecure_skip_verify: false
 ```
 
 ### Multiple Receivers
@@ -122,30 +122,30 @@ receivers:
   - name: 'xmpp-critical'
     webhook_configs:
       - url: 'https://example.com:5281/webhook_to_jid/ops@conference.example.com'
-	send_resolved: true
-	http_config:
-	  basic_auth:
-	    username: 'alertmanager'
-	    password: 'your-secret-password'
+    send_resolved: true
+    http_config:
+      basic_auth:
+        username: 'alertmanager'
+        password: 'your-secret-password'
 
   # Send warnings to a monitoring MUC room
   - name: 'xmpp-warnings'
     webhook_configs:
       - url: 'https://example.com:5281/webhook_to_jid/monitoring@conference.example.com'
-	send_resolved: true
-	http_config:
-	  basic_auth:
-	    username: 'alertmanager'
-	    password: 'your-secret-password'
+    send_resolved: true
+    http_config:
+      basic_auth:
+        username: 'alertmanager'
+        password: 'your-secret-password'
 
   # Send alerts to individual admin
   - name: 'xmpp-admin'
     webhook_configs:
       - url: 'https://example.com:5281/webhook_to_jid/admin@example.com'
-	send_resolved: true
-	http_config:
-	  basic_auth:
-	    username: 'alertmanager'
+    send_resolved: true
+    http_config:
+      basic_auth:
+        username: 'alertmanager'
 	    password: 'your-secret-password'
 
 route:
@@ -155,12 +155,12 @@ route:
   # Route critical alerts to ops room
   routes:
     - match:
-	severity: critical
+    severity: critical
       receiver: 'xmpp-critical'
 
     # Route specific service alerts to admin
     - match:
-	service: database
+    service: database
       receiver: 'xmpp-admin'
 ```
 
