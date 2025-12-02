@@ -146,7 +146,7 @@ receivers:
     http_config:
       basic_auth:
         username: 'alertmanager'
-	    password: 'your-secret-password'
+        password: 'your-secret-password'
 
 route:
   # Default receiver
